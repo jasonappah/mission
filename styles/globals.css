@@ -14,3 +14,31 @@ a {
 * {
   box-sizing: border-box;
 }
+
+*:focus {
+  box-shadow: none !important;
+}
+
+@font-face {
+  font-family: "Sohne";
+  src: url("/fonts/Söhne-Buch.ttf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sohne";
+  src: url("/fonts/Söhne-Kräftig.ttf");
+  font-style: bold;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sohne";
+  src: url("/fonts/Söhne-Fett.otf");
+  font-style: black;
+  font-weight: 800;
+  font-display: swap;
+}
