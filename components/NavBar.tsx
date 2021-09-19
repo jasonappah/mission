@@ -21,9 +21,12 @@ import {
     ChevronDownIcon,
     ChevronRightIcon,
   } from '@chakra-ui/icons';
+  import { useAuth } from '../context/AuthUserContext';
+  import Router from 'next/router'
   
   export default function NavBar() {
     const { isOpen, onToggle } = useDisclosure();
+    const { authUser, loading, signOut } = useAuth();
   
     return (
       <Box>
@@ -65,12 +68,27 @@ import {
             </Flex>
           </Flex>
   
-          <Stack
+          {authUser ? <Stack flex={{ base: 1, md: 0 }}
+            justify={'flex-end'}
+            direction={'row'}
+            spacing={6}>
+
+<Button
+              as={'a'}
+              fontSize={'sm'}
+              fontWeight={400}
+              fontFamily={'Sohne'}
+              variant={'link'}
+              onClick={signOut}>
+              Sign Out
+            </Button>
+            </Stack> : (<Stack
             flex={{ base: 1, md: 0 }}
             justify={'flex-end'}
             direction={'row'}
             spacing={6}>
-            <Button
+
+          <Button
               as={'a'}
               fontSize={'sm'}
               fontWeight={400}
@@ -86,13 +104,15 @@ import {
               fontFamily={'Sohne'}
               color={'white'}
               bg={'#FEAD00'}
-              href={'#'}
+              onClick={() => Router.push('/signup')}
               _hover={{
                 bg: '#F1A400',
               }}>
               Sign Up
             </Button>
-          </Stack>
+            
+          </Stack>)}
+          
         </Flex>
   
         <Collapse in={isOpen} animateOpacity>
